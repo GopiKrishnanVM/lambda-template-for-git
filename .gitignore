@@ -1,0 +1,8 @@
+# Ignore Node.js dependencies
+node_modules/
+
+# Ignore compiled TypeScript output
+dist/
+
+# Ignore local environment configuration
+.env
