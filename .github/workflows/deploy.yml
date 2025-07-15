@@ -42,5 +42,5 @@ jobs:
       - name: Deploy to Lambda
         run: |
           aws lambda update-function-code \
-            --function-name lambda-template-for-git
+            --function-name arn:aws:lambda:ap-south-1:730335296991:function:lambda-template-for-git
             --zip-file fileb://function.zip
