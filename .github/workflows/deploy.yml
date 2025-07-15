@@ -27,6 +27,11 @@ jobs:
       - name: Zip Function
         run: zip -j function.zip dist/index.js
 
+      - name: Check zip contents
+        run: |
+          ls -lh
+          unzip -l function.zip
+
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
