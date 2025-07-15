@@ -37,5 +37,5 @@ jobs:
       - name: Deploy to Lambda
         run: |
           aws lambda update-function-code \
-            --function-name lambda-template-for-git \ # Replace with your Lambda function name
+            --function-name lambda-template-for-git
             --zip-file fileb://function.zip
