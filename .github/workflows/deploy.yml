@@ -42,5 +42,19 @@ jobs:
       - name: Deploy to Lambda
         run: |
           aws lambda update-function-code \
-            --function-name arn:aws:lambda:ap-south-1:730335296991:function:lambda-template-for-git \
+            --function-name ${{ secrets.LAMBDA_ARN }} \
             --zip-file fileb://function.zip
+
+      - name: Publish New Version
+        id: publish
+        run: |
+          VERSION=$(aws lambda publish-version \
+            --function-name ${{ secrets.LAMBDA_ARN }} \
+            --output text --query Version)
+          echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Output Version
+        run: |
+          echo "✅ Deployed version: $VERSION"
+        env:
+          VERSION: ${{ steps.publish.outputs.VERSION }}
